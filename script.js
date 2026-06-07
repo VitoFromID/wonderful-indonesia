@@ -1,212 +1,290 @@
-// === WONDERFUL INDONESIA - SCRIPT ===
+// ============================================
+// Wonderful Indonesia - Interactive Script
+// ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('%c[Wonderful Indonesia] Website loaded successfully.', 'color:#c8102e');
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+// Language Switcher
+let currentLang = 'id';
+
+const translations = {
+    id: {
+        // Hero
+        heroTitle: "WONDERFUL<br>INDONESIA",
+        heroSubtitle: "Jelajahi keindahan, kekayaan budaya, dan cita rasa Nusantara",
+        ctaExplore: "Mulai Jelajah",
+        ctaFood: "Lihat Kuliner Khas",
+        
+        // Section titles
+        wisataTitle: "Destinasi Wisata Unggulan",
+        budayaTitle: "Kekayaan Budaya Nusantara",
+        pulauTitle: "Keindahan Pulau-pulau Indonesia",
+        tokohTitle: "Tokoh Inspiratif Indonesia",
+        kulinerTitle: "Kuliner Nusantara",
+    },
+    en: {
+        // Hero
+        heroTitle: "WONDERFUL<br>INDONESIA",
+        heroSubtitle: "Discover the beauty, rich culture, and flavors of the Archipelago",
+        ctaExplore: "Start Exploring",
+        ctaFood: "Explore Local Cuisine",
+        
+        // Section titles
+        wisataTitle: "Top Tourist Destinations",
+        budayaTitle: "Cultural Heritage of Nusantara",
+        pulauTitle: "Beautiful Islands of Indonesia",
+        tokohTitle: "Inspirational Indonesian Figures",
+        kulinerTitle: "Nusantara Cuisine",
+    }
+};
+
+function switchLanguage(lang) {
+    if (lang === currentLang) return;
     
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    currentLang = lang;
+    
+    // Update active button styles
+    document.getElementById('lang-id').classList.toggle('active', lang === 'id');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    
+    // Update hero content
+    const heroTitle = document.querySelector('.hero-text h1');
+    const heroSubtitle = document.querySelector('.hero-text p');
+    
+    if (heroTitle) heroTitle.innerHTML = translations[lang].heroTitle;
+    if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
+    
+    // Update section headings
+    const headings = {
+        'wisata': translations[lang].wisataTitle,
+        'budaya': translations[lang].budayaTitle,
+        'pulau': translations[lang].pulauTitle,
+        'tokoh': translations[lang].tokohTitle,
+        'kuliner': translations[lang].kulinerTitle
+    };
+    
+    Object.keys(headings).forEach(section => {
+        const headingEl = document.querySelector(`#${section} h2`);
+        if (headingEl) headingEl.textContent = headings[section];
+    });
+    
+    // Update CTA buttons text
+    const ctaButtons = document.querySelectorAll('.hero-text button, .hero-text a');
+    if (ctaButtons.length > 0) {
+        ctaButtons[0].innerHTML = `<span>${translations[lang].ctaExplore}</span> <i class="fa-solid fa-arrow-right"></i>`;
+        if (ctaButtons[1]) ctaButtons[1].textContent = translations[lang].ctaFood;
+    }
+    
+    // Show toast notification
+    showToast(lang === 'id' ? 'Bahasa diubah ke Indonesia' : 'Language switched to English');
+}
+
+// Simple toast notification
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-2xl text-sm shadow-xl z-[200] flex items-center gap-x-2`;
+    toast.innerHTML = `
+        <i class="fa-solid fa-check-circle text-emerald-400"></i>
+        <span>${message}</span>
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.transition = 'all 0.3s ease';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 2200);
+}
+
+// Recipe Data
+const recipes = {
+    nasigoreng: {
+        name: "Nasi Goreng",
+        subtitle: "Hidangan Nasional Indonesia",
+        ingredients: [
+            "2 piring nasi putih (lebih enak kalau nasi semalam)",
+            "2 butir telur",
+            "3 siung bawang putih, cincang halus",
+            "4 siung bawang merah, iris tipis",
+            "2 sdm kecap manis",
+            "1 sdt terasi (opsional)",
+            "Garam, merica, dan cabe rawit sesuai selera",
+            "Pelengkap: kerupuk, timun, dan telur mata sapi"
+        ],
+        steps: [
+            "Panaskan minyak, tumis bawang putih dan bawang merah sampai harum.",
+            "Masukkan telur, orak-arik hingga matang.",
+            "Tambahkan nasi putih, aduk rata dengan bumbu.",
+            "Bumbui dengan kecap manis, garam, merica, dan terasi jika pakai.",
+            "Aduk terus sampai nasi berubah warna menjadi kecoklatan dan harum.",
+            "Angkat dan sajikan dengan kerupuk, timun, serta telur mata sapi di atasnya."
+        ]
+    },
+    rendang: {
+        name: "Rendang",
+        subtitle: "Masakan Padang Paling Terkenal",
+        ingredients: [
+            "1 kg daging sapi (bagian paha atau sandung lamur)",
+            "1 liter santan kental",
+            "10 siung bawang merah",
+            "6 siung bawang putih",
+            "5 butir kemiri sangrai",
+            "3 cm lengkuas, geprek",
+            "3 lembar daun salam & daun jeruk",
+            "Garam, gula merah, dan cabe merah sesuai selera"
+        ],
+        steps: [
+            "Haluskan bumbu: bawang merah, bawang putih, kemiri, cabe, dan lengkuas.",
+            "Tumis bumbu halus sampai benar-benar harum dan tidak langu.",
+            "Masukkan daging, aduk hingga berubah warna.",
+            "Tuang santan, tambahkan daun salam dan daun jeruk.",
+            "Masak dengan api kecil sambil sesekali diaduk (sekitar 3-4 jam).",
+            "Terus masak hingga santan mengering dan daging berwarna hitam kecoklatan serta bumbu meresap sempurna."
+        ]
+    },
+    sate: {
+        name: "Sate Ayam",
+        subtitle: "Dengan Bumbu Kacang Legendaris",
+        ingredients: [
+            "500 gr daging ayam fillet, potong dadu",
+            "10 sdm bumbu kacang (bisa beli atau buat sendiri)",
+            "5 sdm kecap manis",
+            "2 sdm minyak wijen",
+            "Bawang merah & bawang putih untuk bumbu marinasi",
+            "Tusuk sate secukupnya"
+        ],
+        steps: [
+            "Marinasi ayam dengan bawang putih, bawang merah, kecap, dan minyak wijen minimal 30 menit.",
+            "Tusuk ayam ke tusuk sate (jangan terlalu padat).",
+            "Bakar di atas arang atau grill pan sambil diolesi bumbu marinasi.",
+            "Buat bumbu kacang: tumis bumbu halus, masukkan kacang tanah yang sudah dihaluskan + air.",
+            "Sajikan sate dengan bumbu kacang, lontong, dan acar."
+        ]
+    },
+    gadogado: {
+        name: "Gado-Gado",
+        subtitle: "Salad Indonesia dengan Bumbu Kacang",
+        ingredients: [
+            "Sayuran: kangkung, tauge, kacang panjang, kol, wortel (rebus)",
+            "Tahu & tempe goreng",
+            "Kentang rebus & telur rebus",
+            "Bumbu kacang: kacang tanah goreng, cabe, bawang putih, gula merah, air asam",
+            "Kerupuk untuk pelengkap"
+        ],
+        steps: [
+            "Rebus semua sayuran hingga matang tapi tetap renyah.",
+            "Goreng tahu dan tempe hingga kecoklatan.",
+            "Haluskan semua bahan bumbu kacang, lalu masak hingga mengental.",
+            "Susun sayuran, tahu, tempe, kentang, dan telur di piring.",
+            "Siram dengan bumbu kacang yang masih hangat.",
+            "Taburi dengan kerupuk dan sajikan segera."
+        ]
+    },
+    pempek: {
+        name: "Pempek",
+        subtitle: "Khas Palembang dengan Cuko Pedas Manis",
+        ingredients: [
+            "500 gr ikan tenggiri giling halus",
+            "250 gr tepung sagu",
+            "1 butir telur",
+            "200 ml air es",
+            "Garam dan penyedap secukupnya",
+            "Bahan cuko: air, gula merah, cabe rawit, bawang putih, cuka"
+        ],
+        steps: [
+            "Campur ikan giling dengan air es, garam, dan telur hingga kalis.",
+            "Masukkan tepung sagu sedikit demi sedikit sambil diaduk.",
+            "Bentuk adonan sesuai selera (lenjer, kapal selam, atau adaan).",
+            "Rebus pempek dalam air mendidih hingga mengapung, lalu angkat.",
+            "Goreng pempek hingga kecoklatan jika ingin versi goreng.",
+            "Buat cuko: rebus semua bahan hingga kental, sajikan bersama pempek."
+        ]
+    }
+};
+
+// Show Recipe Modal
+function showRecipeModal(dishKey) {
+    const modal = document.getElementById('recipe-modal');
+    const recipe = recipes[dishKey];
+    
+    if (!recipe) return;
+    
+    // Set content
+    document.getElementById('modal-dish-name').textContent = recipe.name;
+    document.getElementById('modal-dish-subtitle').textContent = recipe.subtitle;
+    
+    // Ingredients
+    const ingredientsList = document.getElementById('modal-ingredients');
+    ingredientsList.innerHTML = recipe.ingredients.map(item => 
+        `<li class="flex items-start gap-x-2">
+            <i class="fa-solid fa-check text-emerald-500 mt-1.5 text-xs"></i> 
+            <span>${item}</span>
+         </li>`
+    ).join('');
+    
+    // Steps
+    const stepsList = document.getElementById('modal-steps');
+    stepsList.innerHTML = recipe.steps.map((step, index) => 
+        `<li class="flex gap-x-3">
+            <span class="font-bold text-[#C8102E] min-w-[22px]">${index + 1}.</span> 
+            <span>${step}</span>
+         </li>`
+    ).join('');
+    
+    // Show modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+// Hide Recipe Modal
+function hideRecipeModal() {
+    const modal = document.getElementById('recipe-modal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+}
+
+// Keyboard support for modal
+document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        const modal = document.getElementById('recipe-modal');
+        if (!modal.classList.contains('hidden')) {
+            hideRecipeModal();
+        }
+    }
+});
+
+// Initialize everything when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial active language button
+    document.getElementById('lang-id').classList.add('active');
+    
+    // Optional: Add subtle animation to cards on scroll (simple version)
+    const cards = document.querySelectorAll('.group');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
             }
         });
+    }, { threshold: 0.1 });
+    
+    cards.forEach(card => {
+        card.style.opacity = '0.95';
+        observer.observe(card);
     });
-
-    // === DATA DETAIL PULAU ===
-    const islandData = {
-        "Sumatra": {
-            title: "Sumatra",
-            image: "images/sumatra.jpg",
-            description: "Sumatra adalah pulau terbesar keenam di dunia dan pulau terbesar di Indonesia. Pulau ini terkenal dengan Danau Toba (danau vulkanik terbesar di dunia), hutan hujan tropis yang sangat luas, serta keanekaragaman hayati yang luar biasa termasuk harimau Sumatra dan orangutan. Sumatra juga memiliki kekayaan budaya yang beragam dari berbagai suku seperti Batak, Minangkabau, dan Aceh."
-        },
-        "Jawa": {
-            title: "Jawa",
-            image: "images/java.jpg",
-            description: "Jawa adalah pulau terpadat di Indonesia dan menjadi pusat pemerintahan, ekonomi, dan budaya bangsa. Di sini terdapat Candi Borobudur dan Prambanan yang masuk dalam daftar Warisan Dunia UNESCO. Gunung Bromo, kawasan Dieng, dan kota-kota bersejarah seperti Yogyakarta dan Solo juga menjadi daya tarik utama pulau ini."
-        },
-        "Bali": {
-            title: "Bali",
-            image: "images/bali.jpg",
-            description: "Bali dikenal sebagai Pulau Dewata dengan keindahan alam yang memukau, budaya Hindu yang sangat kental, dan keramahan penduduknya. Sawah terasering Tegallalang, pantai Kuta, Uluwatu, dan desa Ubud menjadi ikon pariwisata Bali. Pulau ini juga terkenal dengan seni tari, musik gamelan, dan upacara adat yang masih lestari hingga sekarang."
-        },
-        "Kalimantan": {
-            title: "Kalimantan",
-            image: "images/kalimantan.jpg",
-            description: "Kalimantan (bagian Indonesia dari Pulau Borneo) adalah rumah bagi hutan hujan tropis terluas di Indonesia. Pulau ini terkenal dengan Taman Nasional Tanjung Puting yang menjadi habitat orangutan liar, serta kekayaan budaya suku Dayak yang unik. Kalimantan juga memiliki keindahan alam seperti Danau Sentarum dan Kepulauan Derawan."
-        },
-        "Sulawesi": {
-            title: "Sulawesi",
-            image: "images/sulawesi.jpg",
-            description: "Sulawesi memiliki bentuk unik menyerupai huruf 'K'. Pulau ini terkenal dengan Tana Toraja yang memiliki tradisi pemakaman dan rumah adat Tongkonan yang sangat khas. Kepulauan Bunaken di Sulawesi Utara merupakan salah satu spot diving terbaik di dunia dengan terumbu karang yang sangat indah dan beragam."
-        },
-        "Papua": {
-            title: "Papua",
-            image: "images/papua.jpg",
-            description: "Papua adalah wilayah paling timur Indonesia yang memiliki keanekaragaman hayati tertinggi di dunia. Raja Ampat di Papua Barat diakui sebagai salah satu spot diving terbaik di dunia. Selain itu, Papua juga memiliki Puncak Jaya (Cartensz Pyramid), gunung tertinggi di Indonesia yang diselimuti salju abadi."
-        },
-        "Nusa Tenggara": {
-            title: "Nusa Tenggara",
-            image: "images/nusa-tenggara.jpg",
-            description: "Nusa Tenggara terkenal dengan Taman Nasional Komodo, satu-satunya tempat di dunia di mana Komodo (Varanus komodoensis) hidup di alam liar. Labuan Bajo menjadi gerbang utama menuju Pulau Komodo. Pulau ini juga memiliki pantai pink yang langka dan savana yang indah di Flores serta Lombok."
-        },
-        "Maluku": {
-            title: "Maluku",
-            image: "images/maluku.jpg",
-            description: "Maluku dikenal sebagai 'Kepulauan Rempah-rempah' sejak zaman penjajahan. Pulau-pulau di Maluku memiliki pantai yang sangat indah dengan air laut yang jernih. Banda Neira dan Ambon adalah beberapa destinasi yang menawarkan keindahan alam bawah laut yang luar biasa serta sejarah rempah-rempah yang kaya."
-        }
-    };
-
-    // Tambahkan event listener ke semua destination card
-    document.querySelectorAll('.destination-card').forEach(card => {
-        card.style.cursor = 'pointer';
-        
-        card.addEventListener('click', function() {
-            // Ambil nama pulau dari data-island atau h3
-            let title = this.getAttribute('data-island');
-            
-            if (!title) {
-                const titleElement = this.querySelector('h3');
-                if (titleElement) title = titleElement.textContent.trim();
-            }
-            
-            const data = islandData[title];
-            
-            if (data) {
-                showModal(data);
-            } else {
-                console.warn('Data tidak ditemukan untuk:', title);
-            }
+    
+    // Easter egg: Click logo to scroll to top
+    const logo = document.querySelector('nav .flex.items-center');
+    if (logo) {
+        logo.style.cursor = 'pointer';
+        logo.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    });
-
-    // Fungsi untuk menampilkan modal
-    window.showModal = function(data) {
-        const modal = document.getElementById('detail-modal');
-        const modalBody = document.getElementById('modal-body');
-        
-        modalBody.innerHTML = `
-            <div class="modal-header">
-                <h2>${data.title}</h2>
-            </div>
-            <div class="modal-body">
-                <img src="${data.image}" alt="${data.title}" onerror="this.src='https://picsum.photos/id/1016/800/600'">
-                <p>${data.description}</p>
-            </div>
-        `;
-        
-        modal.style.display = 'flex';
-    };
-
-    // Fungsi untuk menutup modal
-    window.closeModal = function() {
-        const modal = document.getElementById('detail-modal');
-        modal.style.display = 'none';
-    };
-
-    // === FITUR KLIK KARTU PRESIDEN ===
-    const presidentData = {
-        "Soekarno": {
-            title: "Ir. Soekarno",
-            image: "soekarno.jpg",
-            year: "1945 – 1967",
-            description: "Ir. Soekarno adalah Proklamator dan Presiden pertama Republik Indonesia. Beliau dikenal sebagai Bapak Bangsa yang memproklamasikan kemerdekaan Indonesia pada 17 Agustus 1945 bersama Mohammad Hatta. Soekarno adalah tokoh sentral dalam perjuangan kemerdekaan dan pembentukan negara Indonesia."
-        },
-        "Soeharto": {
-            title: "Soeharto",
-            image: "soeharto.jpg",
-            year: "1967 – 1998",
-            description: "Soeharto adalah Presiden kedua Indonesia yang memerintah selama 32 tahun. Beliau naik ke tampuk kekuasaan setelah peristiwa G30S/PKI. Masa pemerintahannya dikenal dengan Orde Baru yang fokus pada pembangunan ekonomi dan stabilitas politik, meskipun di akhir masa jabatannya terjadi krisis moneter yang berujung pada lengsernya."
-        },
-        "B.J. Habibie": {
-            title: "B.J. Habibie",
-            image: "habibie.jpg",
-            year: "1998 – 1999",
-            description: "B.J. Habibie adalah Presiden ketiga Indonesia, menggantikan Soeharto. Beliau dikenal sebagai 'Bapak Teknologi' Indonesia karena kontribusinya di bidang pesawat terbang (PT Dirgantara Indonesia). Habibie hanya menjabat selama 17 bulan, namun berhasil membawa Indonesia ke era Reformasi dan mengadakan pemilu yang demokratis."
-        },
-        "Abdurrahman Wahid": {
-            title: "Abdurrahman Wahid",
-            image: "gusdur.jpg",
-            year: "1999 – 2001",
-            description: "Abdurrahman Wahid (Gus Dur) adalah Presiden keempat Indonesia. Beliau sering dijuluki 'Pendekar Rakyat' karena sangat dekat dengan rakyat kecil dan memperjuangkan pluralisme serta toleransi antar umat beragama. Gus Dur adalah tokoh NU yang sangat berpengaruh dan dikenal dengan gaya kepemimpinan yang unik dan humoris."
-        },
-        "Megawati": {
-            title: "Megawati Soekarnoputri",
-            image: "megawati.jpg",
-            year: "2001 – 2004",
-            description: "Megawati Soekarnoputri adalah Presiden kelima Indonesia dan putri dari Soekarno. Beliau adalah presiden perempuan pertama di Indonesia. Megawati naik ke tampuk kekuasaan setelah Gus Dur dilengserkan. Masa pemerintahannya fokus pada pemulihan ekonomi pasca krisis dan melanjutkan proses demokrasi."
-        },
-        "SBY": {
-            title: "Susilo Bambang Yudhoyono",
-            image: "sby.jpg",
-            year: "2004 – 2014",
-            description: "Susilo Bambang Yudhoyono (SBY) adalah Presiden keenam Indonesia dan presiden pertama yang dipilih secara langsung oleh rakyat. Beliau memerintah selama dua periode (10 tahun). SBY dikenal dengan gaya kepemimpinan yang tenang dan fokus pada stabilitas politik serta pertumbuhan ekonomi."
-        },
-        "Joko Widodo": {
-            title: "Joko Widodo",
-            image: "jokowi.jpg",
-            year: "2014 – 2024",
-            description: "Joko Widodo (Jokowi) adalah Presiden ketujuh Indonesia. Beliau dikenal dengan gaya 'blusukan' dan dekat dengan rakyat. Jokowi adalah presiden pertama yang bukan berasal dari kalangan militer atau elite politik lama. Masa pemerintahannya fokus pada pembangunan infrastruktur besar-besaran di seluruh Indonesia."
-        },
-        "Prabowo Subianto": {
-            title: "Prabowo Subianto",
-            image: "prabowo.jpg",
-            year: "2024 – Sekarang",
-            description: "Prabowo Subianto adalah Presiden kedelapan Republik Indonesia. Beliau adalah mantan Danjen Kopassus dan Menteri Pertahanan. Prabowo terpilih pada Pemilu 2024 dan dilantik pada Oktober 2024. Beliau dikenal memiliki visi kuat untuk melanjutkan pembangunan dan memperkuat kedaulatan Indonesia."
-        }
-    };
-
-    // Event listener untuk kartu presiden
-    document.querySelectorAll('.president-card').forEach(card => {
-        card.style.cursor = 'pointer';
-        
-        card.addEventListener('click', function() {
-            const nameElement = this.querySelector('.president-name');
-            if (!nameElement) return;
-            
-            const name = nameElement.textContent.trim();
-            const data = presidentData[name];
-            
-            if (data) {
-                showPresidentModal(data);
-            }
-        });
-    });
-
-    // Fungsi modal untuk Presiden
-    window.showPresidentModal = function(data) {
-        const modal = document.getElementById('detail-modal');
-        const modalBody = document.getElementById('modal-body');
-        
-        modalBody.innerHTML = `
-            <div class="modal-header">
-                <h2>${data.title}</h2>
-                <div style="color: #c8102e; font-weight: 600; margin-top: 4px;">${data.year}</div>
-            </div>
-            <div class="modal-body">
-                <img src="${data.image}" alt="${data.title}" onerror="this.src='https://picsum.photos/id/1005/800/600'">
-                <p>${data.description}</p>
-            </div>
-        `;
-        
-        modal.style.display = 'flex';
-    };
-
-    // Tutup modal jika klik di luar konten
-    document.getElementById('detail-modal').addEventListener('click', function(e) {
-        if (e.target.id === 'detail-modal') {
-            closeModal();
-        }
-    });
-
-    // Keyboard escape untuk tutup modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === "Escape") {
-            const modal = document.getElementById('detail-modal');
-            if (modal.style.display === 'flex') {
-                closeModal();
-            }
-        }
-    });
+    }
+    
+    console.log('%c[Wonderful Indonesia] Website siap! 🇮🇩', 'color:#C8102E; font-size: 10px');
 });
