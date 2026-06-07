@@ -30,6 +30,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="badge">OFFICIAL TOURISM</div>
             
@@ -40,9 +41,15 @@
                 Indonesia is waiting for you.
             </p>
 
-            <button class="btn-white" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
-                EXPLORE THE ISLANDS <i class="fa-solid fa-arrow-right"></i>
-            </button>
+            <div class="hero-buttons">
+                <button class="btn-white" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
+                    EXPLORE THE ISLANDS <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                
+                <button class="btn-outline" onclick="document.getElementById('presiden').scrollIntoView({behavior:'smooth'})">
+                    LIHAT PRESIDEN
+                </button>
+            </div>
         </div>
     </section>
 
@@ -67,9 +74,7 @@
         <div class="destination-grid">
             
             <!-- Sumatra -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/sumatra.jpg -->
-                <img src="sumatra.jpg" alt="Sumatra" onerror="this.src='https://picsum.photos/id/1016/800/600'">
+            <div class="destination-card" data-island="Sumatra">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Sumatra</h3>
@@ -81,9 +86,7 @@
             </div>
 
             <!-- Java -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/java.jpg -->
-                <img src="images/java.jpg" alt="Jawa" onerror="this.src='https://picsum.photos/id/160/800/600'">
+            <div class="destination-card" data-island="Jawa">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Jawa</h3>
@@ -95,9 +98,7 @@
             </div>
 
             <!-- Bali -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/bali.jpg -->
-                <img src="images/bali.jpg" alt="Bali" onerror="this.src='https://picsum.photos/id/251/800/600'">
+            <div class="destination-card" data-island="Bali">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Bali</h3>
@@ -109,9 +110,7 @@
             </div>
 
             <!-- Kalimantan -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/kalimantan.jpg -->
-                <img src="images/kalimantan.jpg" alt="Kalimantan" onerror="this.src='https://picsum.photos/id/1005/800/600'">
+            <div class="destination-card" data-island="Kalimantan">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Kalimantan</h3>
@@ -123,9 +122,7 @@
             </div>
 
             <!-- Sulawesi -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/sulawesi.jpg -->
-                <img src="images/sulawesi.jpg" alt="Sulawesi" onerror="this.src='https://picsum.photos/id/201/800/600'">
+            <div class="destination-card" data-island="Sulawesi">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Sulawesi</h3>
@@ -137,9 +134,7 @@
             </div>
 
             <!-- Papua -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/papua.jpg -->
-                <img src="images/papua.jpg" alt="Papua" onerror="this.src='https://picsum.photos/id/29/800/600'">
+            <div class="destination-card" data-island="Papua">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Papua</h3>
@@ -151,9 +146,7 @@
             </div>
 
             <!-- Nusa Tenggara -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/nusa-tenggara.jpg -->
-                <img src="images/nusa-tenggara.jpg" alt="Nusa Tenggara" onerror="this.src='https://picsum.photos/id/160/800/600'">
+            <div class="destination-card" data-island="Nusa Tenggara">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Nusa Tenggara</h3>
@@ -165,9 +158,7 @@
             </div>
 
             <!-- Maluku -->
-            <div class="destination-card">
-                <!-- GANTI FOTO: images/maluku.jpg -->
-                <img src="images/maluku.jpg" alt="Maluku" onerror="this.src='https://picsum.photos/id/251/800/600'">
+            <div class="destination-card" data-island="Maluku">
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Maluku</h3>
@@ -232,7 +223,7 @@
             
             <div class="president-card">
                 <!-- GANTI FOTO: images/soekarno.jpg -->
-                <img src="images/soekarno.jpg" alt="Soekarno" onerror="this.src='https://picsum.photos/id/1005/200/200'">
+                <img src="soekarno.jpg" alt="Soekarno" onerror="this.src='https://picsum.photos/id/1005/200/200'">
                 <div class="president-info">
                     <div class="president-name">Soekarno</div>
                     <div class="president-year">1945 – 1967</div>
@@ -242,7 +233,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/soeharto.jpg -->
-                <img src="images/soeharto.jpg" alt="Soeharto" onerror="this.src='https://picsum.photos/id/1009/200/200'">
+                <img src="soeharto.jpg" alt="Soeharto" onerror="this.src='https://picsum.photos/id/1009/200/200'">
                 <div class="president-info">
                     <div class="president-name">Soeharto</div>
                     <div class="president-year">1967 – 1998</div>
@@ -252,7 +243,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/habibie.jpg -->
-                <img src="images/habibie.jpg" alt="B.J. Habibie" onerror="this.src='https://picsum.photos/id/201/200/200'">
+                <img src="habibie.jpg" alt="B.J. Habibie" onerror="this.src='https://picsum.photos/id/201/200/200'">
                 <div class="president-info">
                     <div class="president-name">B.J. Habibie</div>
                     <div class="president-year">1998 – 1999</div>
@@ -262,7 +253,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/gusdur.jpg -->
-                <img src="images/gusdur.jpg" alt="Abdurrahman Wahid" onerror="this.src='https://picsum.photos/id/29/200/200'">
+                <img src="gusdur.jpg" alt="Abdurrahman Wahid" onerror="this.src='https://picsum.photos/id/29/200/200'">
                 <div class="president-info">
                     <div class="president-name">Abdurrahman Wahid</div>
                     <div class="president-year">1999 – 2001</div>
@@ -272,7 +263,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/megawati.jpg -->
-                <img src="images/megawati.jpg" alt="Megawati" onerror="this.src='https://picsum.photos/id/1006/200/200'">
+                <img src="megawati.jpg" alt="Megawati" onerror="this.src='https://picsum.photos/id/1006/200/200'">
                 <div class="president-info">
                     <div class="president-name">Megawati Soekarnoputri</div>
                     <div class="president-year">2001 – 2004</div>
@@ -282,7 +273,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/sby.jpg -->
-                <img src="images/sby.jpg" alt="SBY" onerror="this.src='https://picsum.photos/id/160/200/200'">
+                <img src="sby.jpg" alt="SBY" onerror="this.src='https://picsum.photos/id/160/200/200'">
                 <div class="president-info">
                     <div class="president-name">Susilo Bambang Yudhoyono</div>
                     <div class="president-year">2004 – 2014</div>
@@ -292,7 +283,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/jokowi.jpg -->
-                <img src="images/jokowi.jpg" alt="Jokowi" onerror="this.src='https://picsum.photos/id/251/200/200'">
+                <img src="jokowi.jpg" alt="Jokowi" onerror="this.src='https://picsum.photos/id/251/200/200'">
                 <div class="president-info">
                     <div class="president-name">Joko Widodo</div>
                     <div class="president-year">2014 – 2024</div>
@@ -302,7 +293,7 @@
 
             <div class="president-card">
                 <!-- GANTI FOTO: images/prabowo.jpg -->
-                <img src="images/prabowo.jpg" alt="Prabowo Subianto" onerror="this.src='https://picsum.photos/id/1008/200/200'">
+                <img src="prabowo.jpg" alt="Prabowo Subianto" onerror="this.src='https://picsum.photos/id/1008/200/200'">
                 <div class="president-info">
                     <div class="president-name">Prabowo Subianto</div>
                     <div class="president-year">2024 – Sekarang</div>
@@ -340,4 +331,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                    </html>
