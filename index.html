@@ -16,19 +16,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-x-3">
-                    <div class="w-11 h-11 flex items-center justify-center">
-                        <!-- Wonderful Indonesia Logo (stylized bird) -->
-                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 4 L38 14 L38 30 L22 40 L6 30 L6 14 Z" fill="#C8102E"/>
-                            <path d="M22 10 L32 16 L32 28 L22 34 L12 28 L12 16 Z" fill="#FFFFFF"/>
-                            <circle cx="22" cy="22" r="4" fill="#C8102E"/>
-                            <!-- Colorful wing accents -->
-                            <path d="M14 18 L10 22" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
-                            <path d="M30 18 L34 22" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
-                            <path d="M15 26 L11 30" stroke="#3B82F6" stroke-width="2"/>
-                            <path d="M29 26 L33 30" stroke="#8B5CF6" stroke-width="2"/>
-                        </svg>
-                    </div>
+                    <img src="images/logo.png" alt="Wonderful Indonesia Logo" class="h-9 w-auto">
                     <div>
                         <span class="font-bold text-2xl tracking-tighter">Wonderful</span>
                         <span class="font-bold text-2xl tracking-tighter text-[#C8102E]">Indonesia</span>
@@ -108,7 +96,7 @@
                     <span>Mulai Jelajah</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <button onclick="document.getElementById('kuliner').scrollIntoView({ behavior: 'smooth' })" 
+                <button onclick="document.getElementById('kuliner').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
                         class="px-8 py-4 border-2 border-white/70 hover:bg-white/10 backdrop-blur text-white font-semibold rounded-2xl transition-all text-lg">
                     Lihat Kuliner Khas
                 </button>
@@ -135,7 +123,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Card 1: Raja Ampat -->
-            <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+            <div onclick="showWisataDetail('raja-ampat')" class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 cursor-pointer">
                 <div class="h-56 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070" 
                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Raja Ampat">
@@ -322,4 +310,17 @@
             <div class="group relative h-[320px] rounded-3xl overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab0?q=80&w=2070" 
                      class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sulawesi">
-                <div class="absolute inset-0 bg-gradi
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70"></div>
+                <div class="absolute bottom-0 p-6 text-white">
+                    <span class="text-xs tracking-widest">BENTUK UNIK</span>
+                    <h3 class="text-3xl font-bold tracking-tight">Sulawesi</h3>
+                    <p class="text-sm mt-1 text-white/80">Surga penyelam dan budaya Toraja yang unik.</p>
+                </div>
+            </div>
+
+            <!-- Papua -->
+            <div class="group relative h-[320px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Papua">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70"></div>
+    
