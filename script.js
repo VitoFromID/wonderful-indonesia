@@ -63,14 +63,20 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.cursor = 'pointer';
         
         card.addEventListener('click', function() {
-            const titleElement = this.querySelector('h3');
-            if (!titleElement) return;
+            // Ambil nama pulau dari data-island atau h3
+            let title = this.getAttribute('data-island');
             
-            const title = titleElement.textContent.trim();
+            if (!title) {
+                const titleElement = this.querySelector('h3');
+                if (titleElement) title = titleElement.textContent.trim();
+            }
+            
             const data = islandData[title];
             
             if (data) {
                 showModal(data);
+            } else {
+                console.warn('Data tidak ditemukan untuk:', title);
             }
         });
     });
