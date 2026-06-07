@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderful Indonesia • Explore the Archipelago</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Wonderful Indonesia Logo" class="real-logo">
+            </div>
+
+            <div class="nav-menu">
+                <a href="#kepulauan">Kepulauan</a>
+                <a href="#tokoh">Tokoh Bangsa</a>
+                <a href="#presiden">Presiden</a>
+            </div>
+
+            <button class="btn-primary" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
+                MULAI JELAJAH
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">OFFICIAL TOURISM</div>
+            
+            <h1>WONDERFUL<br>INDONESIA</h1>
+            
+            <p class="hero-subtitle">
+                From the emerald islands to the peaks of the archipelago.<br>
+                Indonesia is waiting for you.
+            </p>
+
+            <button class="btn-white" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
+                EXPLORE THE ISLANDS <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-container">
+        <div class="stat-card"><div class="stat-number">17.504</div><div class="stat-label">Pulau</div></div>
+        <div class="stat-card"><div class="stat-number">1.300+</div><div class="stat-label">Suku Bangsa</div></div>
+        <div class="stat-card"><div class="stat-number">742</div><div class="stat-label">Bahasa Daerah</div></div>
+        <div class="stat-card"><div class="stat-number">10</div><div class="stat-label">UNESCO Sites</div></div>
+    </div>
+
+    <!-- Kepulauan Indonesia -->
+    <section id="kepulauan" class="section">
+        <div class="section-header">
+            <div>
+                <div class="section-label">THE ARCHIPELAGO</div>
+                <h2 class="section-title">Kepulauan Indonesia</h2>
+            </div>
+            <p class="section-desc">Setiap pulau memiliki keunikan alam, budaya, dan pesona yang berbeda.</p>
+        </div>
+
+        <div class="destination-grid">
+            
+            <!-- Sumatra -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/sumatra.jpg -->
+                <img src="images/sumatra.jpg" alt="Sumatra" onerror="this.src='https://picsum.photos/id/1016/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Sumatra</h3>
+                        <span class="badge-small">6 Provinsi</span>
+                    </div>
+                    <p>Danau Toba terbesar di dunia, hutan tropis, dan rumah bagi harimau Sumatra serta orangutan.</p>
+                    <div class="highlight">Danau Toba • Bukit Lawang • Padang</div>
+                </div>
+            </div>
+
+            <!-- Java -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/java.jpg -->
+                <img src="images/java.jpg" alt="Jawa" onerror="this.src='https://picsum.photos/id/160/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Jawa</h3>
+                        <span class="badge-small">6 Provinsi</span>
+                    </div>
+                    <p>Jantung Indonesia. Borobudur &amp; Prambanan (UNESCO), Gunung Bromo, dan ibu kota Jakarta.</p>
+                    <div class="highlight">Borobudur • Bromo • Yogyakarta • Jakarta</div>
+                </div>
+            </div>
+
+            <!-- Bali -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/bali.jpg -->
+                <img src="images/bali.jpg" alt="Bali" onerror="this.src='https://picsum.photos/id/251/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Bali</h3>
+                        <span class="badge-small">1 Provinsi</span>
+                    </div>
+                    <p>Pulau dewata dengan sawah terasering, pantai eksotis, dan budaya Hindu yang sangat kental.</p>
+                    <div class="highlight">Ubud • Kuta • Seminyak • Uluwatu</div>
+                </div>
+            </div>
+
+            <!-- Kalimantan -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/kalimantan.jpg -->
+                <img src="images/kalimantan.jpg" alt="Kalimantan" onerror="this.src='https://picsum.photos/id/1005/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Kalimantan</h3>
+                        <span class="badge-small">5 Provinsi</span>
+                    </div>
+                    <p>Hutan hujan tropis terluas di Indonesia. Rumah orangutan dan suku Dayak yang legendaris.</p>
+                    <div class="highlight">Derawan • Tanjung Puting • Pontianak</div>
+                </div>
+            </div>
+
+            <!-- Sulawesi -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/sulawesi.jpg -->
+                <img src="images/sulawesi.jpg" alt="Sulawesi" onerror="this.src='https://picsum.photos/id/201/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Sulawesi</h3>
+                        <span class="badge-small">6 Provinsi</span>
+                    </div>
+                    <p>Bentuk unik seperti huruf K. Tana Toraja dengan tradisi pemakaman unik dan Bunaken yang indah.</p>
+                    <div class="highlight">Tana Toraja • Bunaken • Manado</div>
+                </div>
+            </div>
+
+            <!-- Papua -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/papua.jpg -->
+                <img src="images/papua.jpg" alt="Papua" onerror="this.src='https://picsum.photos/id/29/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Papua</h3>
+                        <span class="badge-small">2 Provinsi</span>
+                    </div>
+                    <p>Surga tersembunyi di timur Indonesia. Raja Ampat — salah satu spot diving terbaik di dunia.</p>
+                    <div class="highlight">Raja Ampat • Puncak Jaya • Sentani</div>
+                </div>
+            </div>
+
+            <!-- Nusa Tenggara -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/nusa-tenggara.jpg -->
+                <img src="images/nusa-tenggara.jpg" alt="Nusa Tenggara" onerror="this.src='https://picsum.photos/id/160/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Nusa Tenggara</h3>
+                        <span class="badge-small">3 Provinsi</span>
+                    </div>
+                    <p>Rumah Komodo — satu-satunya kadal raksasa di dunia. Pantai pink dan savana yang indah.</p>
+                    <div class="highlight">Labuan Bajo • Komodo • Lombok • Flores</div>
+                </div>
+            </div>
+
+            <!-- Maluku -->
+            <div class="destination-card">
+                <!-- GANTI FOTO: images/maluku.jpg -->
+                <img src="images/maluku.jpg" alt="Maluku" onerror="this.src='https://picsum.photos/id/251/800/600'">
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3>Maluku</h3>
+                        <span class="badge-small">2 Provinsi</span>
+                    </div>
+                    <p>Kepulauan rempah-rempah. Pantai-pantai putih dan laut yang sangat jernih.</p>
+                    <div class="highlight">Ambon • Banda Neira • Ternate</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tokoh Bangsa -->
+    <section id="tokoh" class="section bg-light">
+        <div class="section-header">
+            <div>
+                <div class="section-label">PEJUANG KEMERDEKAAN</div>
+                <h2 class="section-title">Tokoh Utama Bangsa</h2>
+            </div>
+        </div>
+
+        <div class="tokoh-grid">
+            <div class="tokoh-card">
+                <div class="tokoh-name">Ir. Soekarno</div>
+                <div class="tokoh-role">Proklamator • Presiden Pertama</div>
+                <p>Bapak Bangsa yang memproklamasikan kemerdekaan Indonesia pada 17 Agustus 1945.</p>
+            </div>
+            <div class="tokoh-card">
+                <div class="tokoh-name">Mohammad Hatta</div>
+                <div class="tokoh-role">Proklamator • Wakil Presiden</div>
+                <p>Tokoh yang mendampingi Soekarno dalam proklamasi dan perjuangan kemerdekaan.</p>
+            </div>
+            <div class="tokoh-card">
+                <div class="tokoh-name">R.A. Kartini</div>
+                <div class="tokoh-role">Pahlawan Emansipasi Wanita</div>
+                <p>Pelopor pendidikan dan kesetaraan perempuan di Indonesia.</p>
+            </div>
+            <div class="tokoh-card">
+                <div class="tokoh-name">Pangeran Diponegoro</div>
+                <div class="tokoh-role">Pahlawan Perang Jawa</div>
+                <p>Memimpin perlawanan besar melawan penjajah Belanda (1825–1830).</p>
+            </div>
+            <div class="tokoh-card">
+                <div class="tokoh-name">Cut Nyak Dhien</div>
+                <div class="tokoh-role">Pahlawan Aceh</div>
+                <p>Pejuang perempuan yang gigih melawan penjajah Belanda di Aceh.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presiden -->
+    <section id="presiden" class="section">
+        <div class="section-header">
+            <div>
+                <div class="section-label">PEMIMPIN REPUBLIK</div>
+                <h2 class="section-title">Presiden Republik Indonesia</h2>
+            </div>
+        </div>
+
+        <div class="president-grid">
+            
+            <div class="president-card">
+                <!-- GANTI FOTO: images/soekarno.jpg -->
+                <img src="images/soekarno.jpg" alt="Soekarno" onerror="this.src='https://picsum.photos/id/1005/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Soekarno</div>
+                    <div class="president-year">1945 – 1967</div>
+                    <p>Proklamator &amp; Bapak Bangsa Indonesia.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/soeharto.jpg -->
+                <img src="images/soeharto.jpg" alt="Soeharto" onerror="this.src='https://picsum.photos/id/1009/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Soeharto</div>
+                    <div class="president-year">1967 – 1998</div>
+                    <p>Presiden dengan masa jabatan terpanjang dalam sejarah Indonesia.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/habibie.jpg -->
+                <img src="images/habibie.jpg" alt="B.J. Habibie" onerror="this.src='https://picsum.photos/id/201/200/200'">
+                <div class="president-info">
+                    <div class="president-name">B.J. Habibie</div>
+                    <div class="president-year">1998 – 1999</div>
+                    <p>Bapak Teknologi Indonesia, Presiden ke-3.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/gusdur.jpg -->
+                <img src="images/gusdur.jpg" alt="Abdurrahman Wahid" onerror="this.src='https://picsum.photos/id/29/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Abdurrahman Wahid</div>
+                    <div class="president-year">1999 – 2001</div>
+                    <p>Gus Dur, Presiden ke-4 yang dikenal dengan pluralisme.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/megawati.jpg -->
+                <img src="images/megawati.jpg" alt="Megawati" onerror="this.src='https://picsum.photos/id/1006/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Megawati Soekarnoputri</div>
+                    <div class="president-year">2001 – 2004</div>
+                    <p>Presiden perempuan pertama Indonesia.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/sby.jpg -->
+                <img src="images/sby.jpg" alt="SBY" onerror="this.src='https://picsum.photos/id/160/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Susilo Bambang Yudhoyono</div>
+                    <div class="president-year">2004 – 2014</div>
+                    <p>Presiden ke-6, dua periode.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/jokowi.jpg -->
+                <img src="images/jokowi.jpg" alt="Jokowi" onerror="this.src='https://picsum.photos/id/251/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Joko Widodo</div>
+                    <div class="president-year">2014 – 2024</div>
+                    <p>Presiden ke-7, dikenal dengan gaya blusukan.</p>
+                </div>
+            </div>
+
+            <div class="president-card">
+                <!-- GANTI FOTO: images/prabowo.jpg -->
+                <img src="images/prabowo.jpg" alt="Prabowo Subianto" onerror="this.src='https://picsum.photos/id/1008/200/200'">
+                <div class="president-info">
+                    <div class="president-name">Prabowo Subianto</div>
+                    <div class="president-year">2024 – Sekarang</div>
+                    <p>Presiden ke-8 Republik Indonesia.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal Detail -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div id="modal-body">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-section">
+        <h2>Indonesia is calling.</h2>
+        <p>Jelajahi keindahan alam, budaya, dan keramahan orang Indonesia.</p>
+        <button class="btn-white" onclick="window.location.reload()">MULAI PETUALANGANMU</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>© 2026 Wonderful Indonesia. All rights reserved.</div>
+            <div>Made with ❤️ for the Archipelago</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
