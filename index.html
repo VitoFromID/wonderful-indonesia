@@ -3,342 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonderful Indonesia • Explore the Archipelago</title>
+    <title>Wonderful Indonesia • Jelajahi Nusantara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="bg-white text-gray-800">
 
     <!-- Navbar -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="Wonderful Indonesia Logo" class="real-logo">
-            </div>
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 flex items-center justify-center">
+                        <!-- Wonderful Indonesia Logo (stylized bird) -->
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 4 L38 14 L38 30 L22 40 L6 30 L6 14 Z" fill="#C8102E"/>
+                            <path d="M22 10 L32 16 L32 28 L22 34 L12 28 L12 16 Z" fill="#FFFFFF"/>
+                            <circle cx="22" cy="22" r="4" fill="#C8102E"/>
+                            <!-- Colorful wing accents -->
+                            <path d="M14 18 L10 22" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M30 18 L34 22" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M15 26 L11 30" stroke="#3B82F6" stroke-width="2"/>
+                            <path d="M29 26 L33 30" stroke="#8B5CF6" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-2xl tracking-tighter">Wonderful</span>
+                        <span class="font-bold text-2xl tracking-tighter text-[#C8102E]">Indonesia</span>
+                    </div>
+                </div>
 
-            <div class="nav-menu">
-                <a href="#kepulauan">Kepulauan</a>
-                <span class="nav-divider">|</span>
-                <a href="#tokoh">Tokoh Bangsa</a>
-                <span class="nav-divider">|</span>
-                <a href="#presiden">Presiden</a>
-            </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#wisata" class="hover:text-[#C8102E] transition-colors">Wisata</a>
+                    <a href="#budaya" class="hover:text-[#C8102E] transition-colors">Budaya</a>
+                    <a href="#pulau" class="hover:text-[#C8102E] transition-colors">Pulau</a>
+                    <a href="#tokoh" class="hover:text-[#C8102E] transition-colors">Tokoh</a>
+                    <a href="#kuliner" class="hover:text-[#C8102E] transition-colors">Kuliner</a>
+                </div>
 
-            <button class="btn-primary" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
-                MULAI JELAJAH
-            </button>
+                <div class="flex items-center gap-x-4">
+                    <!-- Language Switcher -->
+                    <div class="hidden md:flex items-center bg-gray-100 rounded-full p-1 text-sm">
+                        <button onclick="switchLanguage('id')" 
+                                class="lang-btn active px-4 py-1.5 rounded-full font-medium transition-all" id="lang-id">
+                            🇮🇩 ID
+                        </button>
+                        <button onclick="switchLanguage('en')" 
+                                class="lang-btn px-4 py-1.5 rounded-full font-medium text-gray-600 hover:text-gray-900 transition-all" id="lang-en">
+                            🇬🇧 EN
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t bg-white">
+            <div class="px-6 py-4 flex flex-col gap-y-3 text-sm font-medium">
+                <a href="#wisata" class="py-2 hover:text-[#C8102E]" onclick="toggleMobileMenu()">Wisata</a>
+                <a href="#budaya" class="py-2 hover:text-[#C8102E]" onclick="toggleMobileMenu()">Budaya</a>
+                <a href="#pulau" class="py-2 hover:text-[#C8102E]" onclick="toggleMobileMenu()">Pulau</a>
+                <a href="#tokoh" class="py-2 hover:text-[#C8102E]" onclick="toggleMobileMenu()">Tokoh</a>
+                <a href="#kuliner" class="py-2 hover:text-[#C8102E]" onclick="toggleMobileMenu()">Kuliner</a>
+                
+                <div class="pt-3 border-t flex items-center gap-x-2">
+                    <button onclick="switchLanguage('id'); toggleMobileMenu()" class="flex-1 py-2 rounded-lg bg-red-50 text-[#C8102E] font-medium">🇮🇩 Bahasa Indonesia</button>
+                    <button onclick="switchLanguage('en'); toggleMobileMenu()" class="flex-1 py-2 rounded-lg hover:bg-gray-100 font-medium">🇬🇧 English</button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="badge">OFFICIAL TOURISM</div>
+    <section class="relative h-[100dvh] min-h-[620px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image (beautiful Indonesia) -->
+        <div class="absolute inset-0 bg-cover bg-center" 
+             style="background-image: url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2070');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
+            <div class="mb-6">
+                <span class="inline-block px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium tracking-widest">OFFICIAL TOURISM BRAND</span>
+            </div>
             
-            <h1>WONDERFUL<br>INDONESIA</h1>
-            
-            <p class="hero-subtitle">
-                From the emerald islands to the peaks of the archipelago.<br>
-                Indonesia is waiting for you.
+            <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4">
+                WONDERFUL<br>INDONESIA
+            </h1>
+            <p class="max-w-md mx-auto text-xl md:text-2xl font-light tracking-tight mb-10 text-white/90">
+                Jelajahi keindahan, kekayaan budaya, dan cita rasa Nusantara
             </p>
 
-            <div class="hero-buttons">
-                <button class="btn-white" onclick="document.getElementById('kepulauan').scrollIntoView({behavior:'smooth'})">
-                    EXPLORE THE ISLANDS <i class="fa-solid fa-arrow-right"></i>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#wisata" 
+                   class="px-8 py-4 bg-white text-[#C8102E] font-semibold rounded-2xl hover:bg-gray-100 transition-all flex items-center justify-center gap-x-2 text-lg">
+                    <span>Mulai Jelajah</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button onclick="document.getElementById('kuliner').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-8 py-4 border-2 border-white/70 hover:bg-white/10 backdrop-blur text-white font-semibold rounded-2xl transition-all text-lg">
+                    Lihat Kuliner Khas
                 </button>
-                
-                <button class="btn-outline" onclick="document.getElementById('presiden').scrollIntoView({behavior:'smooth'})">
-                    LIHAT PRESIDEN
-                </button>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 text-sm">
+            <span class="mb-1">Scroll untuk menjelajah</span>
+            <i class="fa-solid fa-chevron-down animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- WISATA SECTION -->
+    <section id="wisata" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <span class="text-[#C8102E] font-semibold tracking-[3px] text-sm">EXPLORE</span>
+                <h2 class="text-5xl font-bold tracking-tighter">Destinasi Wisata Unggulan</h2>
+            </div>
+            <a href="#" class="hidden md:flex items-center gap-x-2 text-sm font-medium hover:text-[#C8102E]">
+                Lihat semua destinasi <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: Raja Ampat -->
+            <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Raja Ampat">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold tracking-widest bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">PAPUA BARAT</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-2 tracking-tight">Raja Ampat</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4 line-clamp-3">
+                        Surga diving dunia dengan lebih dari 1.500 spesies ikan dan terumbu karang terindah di planet ini.
+                    </p>
+                    <div class="flex items-center text-sm text-[#C8102E] font-medium">
+                        <span>Lebih lanjut</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Borobudur -->
+            <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1584810359583-96f344d2f0a7?q=80&w=2070" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Candi Borobudur">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold tracking-widest bg-amber-100 text-amber-700 px-3 py-1 rounded-full">JAWA TENGAH</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-2 tracking-tight">Candi Borobudur</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4 line-clamp-3">
+                        Candi Buddha terbesar di dunia dan warisan budaya UNESCO yang dibangun pada abad ke-9.
+                    </p>
+                    <div class="flex items-center text-sm text-[#C8102E] font-medium">
+                        <span>Lebih lanjut</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Komodo -->
+            <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=2070" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Taman Nasional Komodo">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold tracking-widest bg-orange-100 text-orange-700 px-3 py-1 rounded-full">NUSA TENGGARA TIMUR</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-2 tracking-tight">Taman Nasional Komodo</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4 line-clamp-3">
+                        Satu-satunya tempat di dunia yang menjadi habitat asli Komodo, kadal raksasa purba.
+                    </p>
+                    <div class="flex items-center text-sm text-[#C8102E] font-medium">
+                        <span>Lebih lanjut</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Bromo -->
+            <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1591608971362-f08b2a75731a?q=80&w=2070" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Gunung Bromo">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold tracking-widest bg-slate-100 text-slate-700 px-3 py-1 rounded-full">JAWA TIMUR</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-2 tracking-tight">Gunung Bromo</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4 line-clamp-3">
+                        Pemandangan matahari terbit di atas lautan pasir vulkanik yang paling ikonik di Indonesia.
+                    </p>
+                    <div class="flex items-center text-sm text-[#C8102E] font-medium">
+                        <span>Lebih lanjut</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats -->
-    <div class="stats-container">
-        <div class="stat-card"><div class="stat-number">17.504</div><div class="stat-label">Pulau</div></div>
-        <div class="stat-card"><div class="stat-number">1.300+</div><div class="stat-label">Suku Bangsa</div></div>
-        <div class="stat-card"><div class="stat-number">742</div><div class="stat-label">Bahasa Daerah</div></div>
-        <div class="stat-card"><div class="stat-number">10</div><div class="stat-label">UNESCO Sites</div></div>
-    </div>
-
-    <!-- Kepulauan Indonesia -->
-    <section id="kepulauan" class="section">
-        <div class="section-header">
-            <div>
-                <div class="section-label">THE ARCHIPELAGO</div>
-                <h2 class="section-title">Kepulauan Indonesia</h2>
+    <!-- BUDAYA SECTION -->
+    <section id="budaya" class="bg-gray-50 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <span class="text-[#C8102E] font-semibold tracking-[3px] text-sm">HERITAGE</span>
+                    <h2 class="text-5xl font-bold tracking-tighter">Kekayaan Budaya Nusantara</h2>
+                </div>
             </div>
-            <p class="section-desc">Setiap pulau memiliki keunikan alam, budaya, dan pesona yang berbeda.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Batik -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-palette text-3xl text-rose-600"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-3">Batik</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Warisan budaya takbenda UNESCO. Setiap motif batik memiliki makna filosofis yang mendalam tentang kehidupan dan alam.
+                    </p>
+                </div>
+
+                <!-- Wayang -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-theater-masks text-3xl text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-3">Wayang Kulit</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Seni pertunjukan bayangan tertua di dunia. Menceritakan kisah epik Ramayana dan Mahabharata dengan nilai moral yang tinggi.
+                    </p>
+                </div>
+
+                <!-- Tari Saman -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-users text-3xl text-sky-600"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-3">Tari Saman</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tarian tradisional Aceh yang sangat energetik. Dilakukan secara berkelompok dengan gerakan tangan dan kepala yang sinkron.
+                    </p>
+                </div>
+
+                <!-- Rumah Adat -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-home text-3xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-3">Rumah Adat</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dari Rumah Gadang Minangkabau hingga Joglo Jawa, setiap rumah adat mencerminkan kearifan lokal dan adaptasi terhadap alam.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PULAU SECTION -->
+    <section id="pulau" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="mb-10">
+            <span class="text-[#C8102E] font-semibold tracking-[3px] text-sm">ARCHIPELAGO</span>
+            <h2 class="text-5xl font-bold tracking-tighter">Keindahan Pulau-pulau Indonesia</h2>
         </div>
 
-        <div class="destination-grid">
-            
-            <!-- Sumatra -->
-            <div class="destination-card" data-island="Sumatra">
-                <img src="sumatra.jpg" alt="Sumatra" onerror="this.src='https://picsum.photos/id/1016/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Sumatra</h3>
-                        <span class="badge-small">6 Provinsi</span>
-                    </div>
-                    <p>Danau Toba terbesar di dunia, hutan tropis, dan rumah bagi harimau Sumatra serta orangutan.</p>
-                    <div class="highlight">Danau Toba • Bukit Lawang • Padang</div>
-                </div>
-            </div>
-
-            <!-- Java -->
-            <div class="destination-card" data-island="Jawa">
-                <img src="java.jpg" alt="Jawa" onerror="this.src='https://picsum.photos/id/160/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Jawa</h3>
-                        <span class="badge-small">6 Provinsi</span>
-                    </div>
-                    <p>Jantung Indonesia. Borobudur &amp; Prambanan (UNESCO), Gunung Bromo, dan ibu kota Jakarta.</p>
-                    <div class="highlight">Borobudur • Bromo • Yogyakarta • Jakarta</div>
-                </div>
-            </div>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
             <!-- Bali -->
-            <div class="destination-card" data-island="Bali">
-                <img src="bali.jpg" alt="Bali" onerror="this.src='https://picsum.photos/id/251/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Bali</h3>
-                        <span class="badge-small">1 Provinsi</span>
-                    </div>
-                    <p>Pulau dewata dengan sawah terasering, pantai eksotis, dan budaya Hindu yang sangat kental.</p>
-                    <div class="highlight">Ubud • Kuta • Seminyak • Uluwatu</div>
+            <div class="group relative h-[320px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Bali">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70"></div>
+                <div class="absolute bottom-0 p-6 text-white">
+                    <span class="text-xs tracking-widest">PULAU DEWATA</span>
+                    <h3 class="text-3xl font-bold tracking-tight">Bali</h3>
+                    <p class="text-sm mt-1 text-white/80">Perpaduan sempurna antara pantai, budaya, dan spiritualitas.</p>
                 </div>
             </div>
 
-            <!-- Kalimantan -->
-            <div class="destination-card" data-island="Kalimantan">
-                <img src="kalimantan.jpg" alt="Kalimantan" onerror="this.src='https://picsum.photos/id/1005/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Kalimantan</h3>
-                        <span class="badge-small">5 Provinsi</span>
-                    </div>
-                    <p>Hutan hujan tropis terluas di Indonesia. Rumah orangutan dan suku Dayak yang legendaris.</p>
-                    <div class="highlight">Derawan • Tanjung Puting • Pontianak</div>
+            <!-- Sumatra -->
+            <div class="group relative h-[320px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sumatra">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70"></div>
+                <div class="absolute bottom-0 p-6 text-white">
+                    <span class="text-xs tracking-widest">PULAU TERBESAR</span>
+                    <h3 class="text-3xl font-bold tracking-tight">Sumatra</h3>
+                    <p class="text-sm mt-1 text-white/80">Danau Toba, orangutan, dan alam liar yang memukau.</p>
+                </div>
+            </div>
+
+            <!-- Jawa -->
+            <div class="group relative h-[320px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2070" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Jawa">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70"></div>
+                <div class="absolute bottom-0 p-6 text-white">
+                    <span class="text-xs tracking-widest">PUSAT SEJARAH</span>
+                    <h3 class="text-3xl font-bold tracking-tight">Jawa</h3>
+                    <p class="text-sm mt-1 text-white/80">Candi, keraton, dan denyut nadi budaya Indonesia.</p>
                 </div>
             </div>
 
             <!-- Sulawesi -->
-            <div class="destination-card" data-island="Sulawesi">
-                <img src="sulawesi.jpg" alt="Sulawesi" onerror="this.src='https://picsum.photos/id/201/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Sulawesi</h3>
-                        <span class="badge-small">6 Provinsi</span>
-                    </div>
-                    <p>Bentuk unik seperti huruf K. Tana Toraja dengan tradisi pemakaman unik dan Bunaken yang indah.</p>
-                    <div class="highlight">Tana Toraja • Bunaken • Manado</div>
-                </div>
-            </div>
-
-            <!-- Papua -->
-            <div class="destination-card" data-island="Papua">
-                <img src="papua.jpg" alt="Papua" onerror="this.src='https://picsum.photos/id/29/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Papua</h3>
-                        <span class="badge-small">2 Provinsi</span>
-                    </div>
-                    <p>Surga tersembunyi di timur Indonesia. Raja Ampat — salah satu spot diving terbaik di dunia.</p>
-                    <div class="highlight">Raja Ampat • Puncak Jaya • Sentani</div>
-                </div>
-            </div>
-
-            <!-- Nusa Tenggara -->
-            <div class="destination-card" data-island="Nusa Tenggara">
-                <img src="nusa-tenggara.jpg" alt="Nusa Tenggara" onerror="this.src='https://picsum.photos/id/160/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Nusa Tenggara</h3>
-                        <span class="badge-small">3 Provinsi</span>
-                    </div>
-                    <p>Rumah Komodo — satu-satunya kadal raksasa di dunia. Pantai pink dan savana yang indah.</p>
-                    <div class="highlight">Labuan Bajo • Komodo • Lombok • Flores</div>
-                </div>
-            </div>
-
-            <!-- Maluku -->
-            <div class="destination-card" data-island="Maluku">
-                <img src="maluku.jpg" alt="Maluku" onerror="this.src='https://picsum.photos/id/251/800/600'">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3>Maluku</h3>
-                        <span class="badge-small">2 Provinsi</span>
-                    </div>
-                    <p>Kepulauan rempah-rempah. Pantai-pantai putih dan laut yang sangat jernih.</p>
-                    <div class="highlight">Ambon • Banda Neira • Ternate</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Tokoh Bangsa -->
-    <section id="tokoh" class="section bg-light">
-        <div class="section-header">
-            <div>
-                <div class="section-label">PEJUANG KEMERDEKAAN</div>
-                <h2 class="section-title">Tokoh Utama Bangsa</h2>
-            </div>
-        </div>
-
-        <div class="tokoh-grid">
-            <div class="tokoh-card">
-                <div class="tokoh-name">Ir. Soekarno</div>
-                <div class="tokoh-role">Proklamator • Presiden Pertama</div>
-                <p>Bapak Bangsa yang memproklamasikan kemerdekaan Indonesia pada 17 Agustus 1945.</p>
-            </div>
-            <div class="tokoh-card">
-                <div class="tokoh-name">Mohammad Hatta</div>
-                <div class="tokoh-role">Proklamator • Wakil Presiden</div>
-                <p>Tokoh yang mendampingi Soekarno dalam proklamasi dan perjuangan kemerdekaan.</p>
-            </div>
-            <div class="tokoh-card">
-                <div class="tokoh-name">R.A. Kartini</div>
-                <div class="tokoh-role">Pahlawan Emansipasi Wanita</div>
-                <p>Pelopor pendidikan dan kesetaraan perempuan di Indonesia.</p>
-            </div>
-            <div class="tokoh-card">
-                <div class="tokoh-name">Pangeran Diponegoro</div>
-                <div class="tokoh-role">Pahlawan Perang Jawa</div>
-                <p>Memimpin perlawanan besar melawan penjajah Belanda (1825–1830).</p>
-            </div>
-            <div class="tokoh-card">
-                <div class="tokoh-name">Cut Nyak Dhien</div>
-                <div class="tokoh-role">Pahlawan Aceh</div>
-                <p>Pejuang perempuan yang gigih melawan penjajah Belanda di Aceh.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Presiden -->
-    <section id="presiden" class="section">
-        <div class="section-header">
-            <div>
-                <div class="section-label">PEMIMPIN REPUBLIK</div>
-                <h2 class="section-title">Presiden Republik Indonesia</h2>
-            </div>
-        </div>
-
-        <div class="president-grid">
-            
-            <div class="president-card">
-                <!-- GANTI FOTO: images/soekarno.jpg -->
-                <img src="soekarno.jpg" alt="Soekarno" onerror="this.src='https://picsum.photos/id/1005/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Soekarno</div>
-                    <div class="president-year">1945 – 1967</div>
-                    <p>Proklamator &amp; Bapak Bangsa Indonesia.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/soeharto.jpg -->
-                <img src="soeharto.jpg" alt="Soeharto" onerror="this.src='https://picsum.photos/id/1009/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Soeharto</div>
-                    <div class="president-year">1967 – 1998</div>
-                    <p>Presiden dengan masa jabatan terpanjang dalam sejarah Indonesia.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/habibie.jpg -->
-                <img src="habibie.jpg" alt="B.J. Habibie" onerror="this.src='https://picsum.photos/id/201/200/200'">
-                <div class="president-info">
-                    <div class="president-name">B.J. Habibie</div>
-                    <div class="president-year">1998 – 1999</div>
-                    <p>Bapak Teknologi Indonesia, Presiden ke-3.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/gusdur.jpg -->
-                <img src="gusdur.jpg" alt="Abdurrahman Wahid" onerror="this.src='https://picsum.photos/id/29/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Abdurrahman Wahid</div>
-                    <div class="president-year">1999 – 2001</div>
-                    <p>Gus Dur, Presiden ke-4 yang dikenal dengan pluralisme.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/megawati.jpg -->
-                <img src="megawati.jpg" alt="Megawati" onerror="this.src='https://picsum.photos/id/1006/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Megawati Soekarnoputri</div>
-                    <div class="president-year">2001 – 2004</div>
-                    <p>Presiden perempuan pertama Indonesia.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/sby.jpg -->
-                <img src="sby.jpg" alt="SBY" onerror="this.src='https://picsum.photos/id/160/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Susilo Bambang Yudhoyono</div>
-                    <div class="president-year">2004 – 2014</div>
-                    <p>Presiden ke-6, dua periode.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/jokowi.jpg -->
-                <img src="jokowi.jpg" alt="Jokowi" onerror="this.src='https://picsum.photos/id/251/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Joko Widodo</div>
-                    <div class="president-year">2014 – 2024</div>
-                    <p>Presiden ke-7, dikenal dengan gaya blusukan.</p>
-                </div>
-            </div>
-
-            <div class="president-card">
-                <!-- GANTI FOTO: images/prabowo.jpg -->
-                <img src="prabowo.jpg" alt="Prabowo Subianto" onerror="this.src='https://picsum.photos/id/1008/200/200'">
-                <div class="president-info">
-                    <div class="president-name">Prabowo Subianto</div>
-                    <div class="president-year">2024 – Sekarang</div>
-                    <p>Presiden ke-8 Republik Indonesia.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Modal Detail -->
-    <div id="detail-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            
-            <div id="modal-body">
-                <!-- Konten akan diisi oleh JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Final CTA -->
-    <div class="cta-section">
-        <h2>Indonesia is calling.</h2>
-        <p>Jelajahi keindahan alam, budaya, dan keramahan orang Indonesia.</p>
-        <button class="btn-white" onclick="window.location.reload()">MULAI PETUALANGANMU</button>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div>© 2026 Wonderful Indonesia. All rights reserved.</div>
-            <div>Made with ❤️ for the Archipelago</div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-            </html>
+            <div class="group relative h-[320px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab0?q=80&w=2070" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sulawesi">
+                <div class="absolute inset-0 bg-gradi
