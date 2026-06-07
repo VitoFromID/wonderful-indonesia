@@ -39,6 +39,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -124,12 +125,13 @@ nav {
 }
 
 .hero-content {
-    max-width: 1400px;
     width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
     position: relative;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .badge {
@@ -540,4 +542,4 @@ footer {
     font-size: 16.5px;
     line-height: 1.85;
     color: #444;
-             }
+                                                       }
