@@ -100,44 +100,84 @@ nav {
 /* Hero */
 .hero {
     height: 100dvh;
-    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('images/hero.jpg');
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('https://picsum.photos/id/1016/2000/1200');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     color: white;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.5) 50%,
+        rgba(0,0,0,0.7) 100%
+    );
 }
 
 .hero-content {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
+    position: relative;
+    z-index: 2;
 }
 
 .badge {
     display: inline-block;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     color: #c8102e;
     font-size: 12px;
     font-weight: 700;
-    padding: 6px 16px;
+    padding: 8px 20px;
     border-radius: 9999px;
     margin-bottom: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .hero h1 {
-    font-size: 110px;
-    line-height: 0.88;
+    font-size: 96px;
+    line-height: 0.9;
     font-weight: 800;
     margin-bottom: 24px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .hero-subtitle {
     font-size: 22px;
-    max-width: 520px;
+    max-width: 580px;
     margin-bottom: 40px;
-    opacity: 0.9;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.6);
+    padding: 16px 32px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #c8102e;
+    border-color: white;
 }
 
 /* Stats */
@@ -464,4 +504,4 @@ footer {
     font-size: 16.5px;
     line-height: 1.85;
     color: #444;
-}
+        }
